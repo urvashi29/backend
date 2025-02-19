@@ -25,3 +25,15 @@ app.get("/", (req, res) => {
 app.get("/employees", (req, res) => {
   res.status(200).json({ data: person });
 });
+
+app.get("/employees/:id", (req, res) => {
+  const id = req.params.id;
+
+  let employee = person.find((e) => (e.id = id));
+
+  if (employee) {
+    res.status(200).json({ employee });
+  } else {
+    res.status(404).json({ message: "not exist" });
+  }
+});
